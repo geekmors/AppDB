@@ -44,7 +44,7 @@ class AppDB {
         let currentDB = JSON.parse(localStorage.getItem(this.name))
         
         if(typeof currentDB[key] == 'undefined'){
-            throw new Error('AppDB.get: '+key+' does not have any data or has not been set.')
+            return null // to be used as, var foo = appDB.get('foo') ?? "default"
         }
         return currentDB[key]
     }
@@ -74,5 +74,3 @@ class AppDB {
         localStorage.setItem(this.name, '{}')
     }
 }
-
-const appDB = new AppDB('tongueSpice__9879872837')
